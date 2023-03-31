@@ -14,7 +14,7 @@ int main(void)
         printf("부모프로세스: 자식의 종료를 기다림\n");
 
         /* 자식프로세스 종료 대기. status에 종료 코드 받음 */
-	wait(&status);   // status >> 8비트만큼 이동(응답 코드가 32비트중 끝에 있지 않을 경우땜에)
+	    wait(&status);   // status >> 8비트만큼 이동(응답 코드가 32비트중 끝에 있지 않을 경우땜에)
 
         printf("부모프로세스: child의 종료 코드=%d\n", WEXITSTATUS(status));
         return 0;
