@@ -11,6 +11,7 @@ int main(void)
     int start= 0;
     int end = 0;
     int status;
+    scanf("%d, %d", &start, &end);
 
     pid = fork();/* 자식프로세스 생성 */
     switch(pid){
@@ -18,7 +19,7 @@ int main(void)
             printf("fork 오류");
             return -1;
         case 0:
-            for (i = 10; i <= 100; i++){
+            for (i = start; i <= end; i++){
                 sum += i;
             }
             if(sum < 1000){
@@ -34,9 +35,8 @@ int main(void)
                 exit(2);
             }            
         default:
-            start = 10;
-            end = 100;
             wait(&status); // 자식프로세스 종료 대기
+
             // printf("status: %d\n", WEXITSTATUS(status));
             if(status == 0){
                 printf("부모 프로세스: 1000보다 작다\n");
