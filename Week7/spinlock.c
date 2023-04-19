@@ -34,9 +34,10 @@ void* worker(void* arg) // 스레드 코드
 {
 	printf("%s 시작 %d\n", (char *)arg, sum);
 	for (int i = 0; i < 10000000; i++) {
-		/* entry 코드 */
+		pthread_spin_lock(&lock);/* entry 코드 */
 		sum += 10; // 임계구역 코드
-		/* exit 코드 */
+		pthread_spin_unlock(&lock);/* exit 코드 */
+	// mutex는 대기큐에 넣고 빼야하기 때문에 작업 규모에 따라 다르긴 하지만 이 경우 spinlock이 더 빠르다
 	}
 	printf("%s 끝 %d\n", (char *)arg, sum);
 }

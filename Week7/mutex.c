@@ -6,7 +6,7 @@
 
 int sum = 0;	// 두 스레드가 공유하는 변수
 pthread_mutex_t lock;	// 뮤텍스락
-
+// compile 할때 gcc -o mutex mutex.c -lpthread
 void* worker(void *);
 
 int main(void)
