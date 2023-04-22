@@ -12,7 +12,6 @@ int main(void)
     int end = 0;
     int status;
     scanf("%d, %d", &start, &end);
-
     pid = fork();/* 자식프로세스 생성 */
     switch(pid){
         case -1:
